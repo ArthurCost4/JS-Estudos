@@ -13,17 +13,29 @@ document.getElementById("saidaa").addEventListener("click", (ev)=>{
     let comp = PPT[Math.floor(Math.random()* PPT.length)]
     console.log(comp)
     
-    if(value === comp){
-        document.getElementById("saida").innerHTML = "EMPATE"
+    if(value == comp){
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp.toUpperCase()}, OU SEJA, EMPATE`
     }
+
     if(value === "PEDRA" && comp == "PAPEL"){
-        document.getElementById("saida").innerHTML = "perdeu pra papel"
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp.toUpperCase()}, OU SEJA, PERDEEEU`
     }
+    if(value === "PEDRA" && comp == "TESOURA"){
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp.toUpperCase()}, OU SEJA, GANHOU`
+    }
+
     if(value === "PAPEL" && comp == "TESOURA"){
-        document.getElementById("saida").innerHTML = "perdeu pra tesoura"
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp}, OU SEJA, PERDEEEU`
     }
+    if(value === "PAPEL" && comp == "PEDRA"){
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp}, OU SEJA, GANHOU`
+    }
+
     if(value === "TESOURA" && comp == "PEDRA"){
-        document.getElementById("saida").innerHTML = "perdeu pra pedra"
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp}, OU SEJA, PERDEEEU`
+    }
+    if(value === "TESOURA" && comp == "PAPEL"){
+        document.getElementById("saida").innerHTML = `VOCE USOU ${value.bold()} E EU ${comp}, OU SEJA, GANHOU`
     }
 
 })
