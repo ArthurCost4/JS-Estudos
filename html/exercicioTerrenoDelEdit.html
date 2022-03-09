@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="../js/trreno.js" defer></script>
+
+    <style>
+        deletebtn{
+            width: 15px;
+            height: 15px;
+        }
+    </style>
+    <title>Cálculo do terreno</title>
+</head>
+<body >
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-12">
+                <div class="card"> <!--Entradas - Campos e botão-->
+                    <div class="card-header">
+                        <h1>Cálculo Preço Terreno</h1>
+                    </div>
+                    <div class="card-body">
+                        <form id="form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Cliente">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12">
+                                    <label>Preço</label>
+                                    <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço do terreno">
+                                </div>
+                                <div class="col-md-4 col-sm-12">
+                                    <label>Frente</label>
+                                    <input type="text" class="form-control" id="frente" name="frente" placeholder="Metragem da frente">
+                                </div>
+                                <div class="col-12 col-md-4 col-sm-12">
+                                    <label>Comp.</label>
+                                    <input type="text"  class="form-control" id="comprimento" name="comprimento" placeholder="Metragem do comprimento">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button id="btninserir" onclick="inserirItem()" class="btn btn-sm btn-primary">Inserir Registro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-2"> <!--Tabela-->
+            <div id="divTabela" class="col-12 d-none align-self-center">
+                <table class="small p-3 table table-striped table-hover table-bordered table-sm">
+                    <thead>
+                        <th class="text-light  bg-dark" scope="col">Ações</th>
+                        <th class="text-light  bg-dark" scope="col">ID</th>
+                        <th class="text-light  bg-dark" scope="col">Nome do Cliente</th>
+                        <th class="text-light  bg-dark" scope="col">Preço m²</th>
+                        <th class="text-light  bg-dark" scope="col">Frente (metragem)</th>
+                        <th class="text-light  bg-dark" scope="col">Comprimento (metragem)</th>
+                        <th class="text-light  bg-dark" scope="col">Área (m²)</th>
+                        <th class="text-light  bg-dark" scope="col">Preço Total</th>
+                    </thead>
+                    <tbody id="listaItem"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
