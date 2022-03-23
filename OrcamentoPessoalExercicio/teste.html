@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        var div = document.getElementById('div')
+        var opicoes = ['Checkbox1', 'Checbox2', 'Checbox3']
+        for (i in opicoes){
+            let rd = document.createElement('input')
+            rd.type = 'checkbox';
+            rd.value = opicoes[i]
+            let label = document.createElement('label')
+            label.innerHTML=opicoes[i]
+            div.append(rd)
+            div.append(label)
+        }
+
+    </script>
+</body>
+</html>

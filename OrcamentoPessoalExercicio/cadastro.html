@@ -1,0 +1,198 @@
+<html>
+	<head>
+    <meta charset="utf-8" />
+		<title>Orçamento Pessoal - Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5ad1d1ec73.js" crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+
+	</head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-success mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+           <img src="./img/logo.png" width="50" height="35" alt="Orçamento pessoal">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navBar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="cadastro.html">Cadastro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="consulta.html">Consulta</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <form id="dados">
+        <div class="row my-2">
+          <div class="col mb-5">
+            <h1 class="display-4">Registro de Movimentações</h1>
+          </div>
+        </div>
+  
+        <div class="row my-3">
+              <div class="col-md-2 my-1">
+                <select class="form-select" id="tipo" onchange="selectTipoOnChange(this)">
+                  <option value="">Tipo</option>
+                </select>
+              </div>
+              <div class="col-md-3 my-1">
+                <select class="form-select" id="centroCustos" onchange="selectCentroCustosOnChange()">
+                  <option value="">Centro de Custos</option>
+                </select>
+              </div>
+  
+             
+  
+            <div class="col-md-2 my-1">
+                <input type="text" class="form-control" placeholder="Dia" id="dia" />
+            </div>
+  
+            <div class="col-md-3 my-1">
+              <select class="form-select" id="mes">
+                  <option value="">Mês</option>
+                  <option value="1">Janeiro</option>
+                  <option value="2">Fevereiro</option>
+                  <option value="3">Março</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Maio</option>
+                  <option value="6">Junho</option>
+                  <option value="7">Julho</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Setembro</option>
+                  <option value="10">Outubro</option>
+                  <option value="11">Novembro</option>
+                  <option value="12">Dezembro</option>
+              </select>
+            </div>
+  
+            <div class="col-md-2 my-1">
+              <select class="form-select" id="ano">
+                  <option value="">Ano</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022" selected>2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+              </select>
+          </div>
+            
+        </div>
+  
+          <div class="row my-3 my-1">
+            <div class="col-md-7">
+              <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
+            </div>
+  
+            <div class="col-md-4 my-1">
+              <input type="text" class="form-control" placeholder="Valor" id="valor" />
+            </div>
+  
+            <div class="col-md-1 d-flex justify-content-end">
+              <button type="button" class="btn btn-success" onclick="adicionarRegistro()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="modalMenssagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div id="modalHeader" class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"><span class="text-light" id="modalTitulo">Mensagem...</span></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mx-2">
+            <p id="modalMensagem"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="modalOk" class="btn" data-bs-dismiss="modal">Entendido</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        var dados = document.forms.dados
+        var [tipo, centroCusto, dia, mes, ano, descricao, valor] = dados;        
+        var slTipo = document.getElementById('tipo')
+        var slCentroCustos = document.getElementById('centroCustos')
+        
+        window.addEventListener("load", function(event) {
+          //Configuração inicial para a geração de Id para os registros
+            configurarID()
+
+            carregarData()
+
+          //Options Tipo dinâmicos
+            criarSelectTipo()
+        });
+        //Evento que dispara o botão adicionar
+        function adicionarRegistro(){
+          let registro = new RegistroFinanceiro(tipo.value, centroCusto.value, dia.value, mes.value, ano.value, descricao.value, valor.value) 
+          if (registro.validarDados()){
+              let bd = new BancoDeDados()
+              bd.setGravar(registro)
+              exibirStatusModal('Sucesso!','Registro gravado com sucesso!','success');
+          } else{
+              exibirStatusModal('Erro!','Dados inconsistentes. O registro não pode ser realizado', 'danger')
+          }
+          limparCampos();   
+      }
+      function carregarData(){
+        dados.dia.value=data.getDate()
+        dados.mes.value=data.getMonth()+1
+        dados.ano.value=data.getFullYear()
+    }
+        function selectTipoOnChange(tipo){
+          //Criar select de centro de custos
+          if (tipo.value=='Despesa'){criarSelectCentroCustos(opDespesas)}
+          if (tipo.value=='Receita'){criarSelectCentroCustos(opReceitas)}
+          if (tipo.value=='Investimento'){criarSelectCentroCustos(opInvestimentos)}
+            
+        }
+        function criarSelectTipo(){
+          opTipo.forEach((valor,index)=>{
+              var opt = document.createElement("option");
+              opt.value = valor;
+              opt.text = valor;
+              slTipo.add(opt, slTipo.options[index+1]);
+          })
+        }
+        function selectCentroCustosOnChange(){
+          dados.descricao.focus()
+            
+        }
+        function criarSelectCentroCustos(opCC){
+          slCentroCustos.options.length=1;
+            opCC.forEach((valor,index)=>{
+              var opt = document.createElement("option");
+              opt.value = valor;
+              opt.text = valor;
+              slCentroCustos.add(opt, slCentroCustos.options[index+1]);
+            })
+        }
+        
+        
+    </script>
+  </body>	
+
+</html>
