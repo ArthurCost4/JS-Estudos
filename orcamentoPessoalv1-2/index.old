@@ -1,0 +1,54 @@
+const express = require('express');
+var app = express();
+
+//conversor de arquivos e trata o formato das requisiçoes
+const bodyParser = require('body-parser')
+
+app.use(express.static('./vielws'))//configura o diretorio para arquivos estaticos com css e js de front-end
+
+app.use(bodyParser.urlencoded({extended: true})) //o que chegar na minha URL ele transforma em objeto
+
+app.use(bodyParser.json)//Transforma o que ele recebeu da url em um objeto JSON
+
+//configura politica de seguranca para aceitar acesso externo
+const cors = require('cors');
+app.use(cors())
+
+
+//Operaçoes com o banco de dados
+const bd = require('./APP/database.js');
+
+app.get('/tipo', (req, res)=>{
+    const sql = `SELECT * FROM tipo`
+    bd.executarQuery(sql, res);
+})
+
+app.get('/centrocustos', (req, res)=>{
+    const sql = `SELECT * FROM centro_custos`
+    bd.executarQuery(sql, res)
+})
+
+app.post('/centrocustos', (req, res)=>{
+    //http://localhost:8081/centrocustos?idTipo=1&nome=oficina mecanica
+    let params = [parseInt(req.body.idTipo), req.body.nome]
+    console.log(params)
+    const sql = `INSERT INTO centro_custos (idTipo, nome) VALUES (?, ?)`;
+    bd.executarQuery(sql, res, params)
+})
+
+app.put('/centrocustos', (req, res)=>{
+    let params = [req.query['nome'], req.query['idTipo'],parseInt(req.query['id'])];
+    const sql = `UPDATE centro_custos SET nome=?, idTipo=? WHERE idCentroCustos=?`
+    bd.executarQuery(sql, res, params)
+})
+
+app.delete('/centrocustos', (req, res)=>{
+    let params = [parseInt(req.query['id'])];
+    const sql = 'DELETE FROM centro_custos WHERE idCentroCustos=?'
+    bd.executarQuery(sql, res, params)
+})
+
+const port = 8081
+app.listen(port, ()=>{
+console.log(`sevidor rodando no link http://localhost:${port}...`)
+})

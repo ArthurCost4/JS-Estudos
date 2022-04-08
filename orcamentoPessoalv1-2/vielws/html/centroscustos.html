@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="../js/rotas.js"></script>
+    <script src="../js/funçoesPadrao.js"></script>
+    <link rel="stylesheet" href="../css/centroscustos.css">
+    <link rel="stylesheet" href="../css/centroscustosColor.css">
+    <script src="https://kit.fontawesome.com/c9e4967131.js" crossorigin="anonymous"></script>
+
+    <title>Centros Custost</title>
+</head>
+<body>
+    <div class="cabecalho-global">
+        <header class="cabecalho">
+            <nav class="cabecalho-nav">
+                <li class="cabecalho-nav-a"><a  href="http://localhost:8081/arearestrita">Area Restrita</a></li>
+                <li class="cabecalho-nav-a"><a  href="http://localhost:8081/home">HOME</a></li>
+                <li class="cabecalho-nav-a"><a  href="">Suport</a></li>
+            </nav>
+        </header>
+        <section class="cabecalho-content">
+            <p>Lorem ipsum dolor sit.</p>
+            <h2>NOS DEIXA AJUDAR VOCE, FAÇA O SEU FUTURO!!!</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, quib esse alias consequatur placeat cum quasi voluptatibus dolore.</p>
+            <button>RECEBA</button>
+        </section>
+        
+    </div>
+    <!--action="http://localhost:8081/centrocustos" method="post"-->
+    <main>
+        <div class="container intro">
+            <h1 class="intro-h1">Gerencie seu orçamento pessoal</h1>
+            <p  class="redicenca">...</p>
+            <p class="intro-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis velit labore inventore omnis sed eligendi quaerat deserunt, dolorum commodi, ea voluptate maiores excepturi sint cumque sequi blanditiis laudantium esse odit.</p>
+        </div>
+        <!--
+        <section class="section-explicação container">
+
+            <h2 class="section-h2">GLOSSARIO</h2>
+
+            <div class="section-explicacao">
+                <p class="section-p"><span class="quem-e">Lorem: </span>  ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda a sed voluptate accusamus officia ipsam quis omnis officiis eveniet nam cum quisquam quam fugit, perferro?</p>
+                <p class="section-p"><span class="quem-e">Lorem: </span>  ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda a sed voluptate accusamus officia ipsam quis omnis officiis eveniet nam cum quisquam quam fugit, perfe?</p>
+                <p class="section-p"><span class="quem-e">Lorem: </span>  ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda a sed voluptate accusamus officia ipsam quis omnis officiis ero?</p>
+                <p class="section-p"><span class="quem-e">Lorem: </span>  ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda a sed voluptate accusamus officia ipsam quis omnis officiis eveniet nam cum quisquam quam fugit, perfereero?</p>
+            </div>
+        </section>
+        -->
+        <div class="formulario container">
+            <form id="form">
+                <label for="id">ID</label><br>
+                <input type="text" name="id" readonly id=""><br>
+                <label for="nome">Centro de Custo</label><br>
+                <input type="text" id="nome" name="nome"><br>
+                <label for="idTipo">Açoes</label><br>
+                <input type="text" id="idTipo" name="idTipo"><br>
+                <button onclick="inserirRegistro()">Gravar</button>
+            </form>
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th>Centro de custo</th>
+                        <th>Entrada/saida</th>
+                        <th>Açoes</th>
+                    </tr>
+                </thead>
+                <tbody id="listaRegis"></tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="foter-coll">
+            <h4 class="foter-coll-h4">Nos siga!!!</h4>
+            <nav>
+                <a href="#"><i class="fa fa-solid fa-heart"></i></a>
+                <a href="#"><i class="fa fa-solid fa-users"></i></a>
+                <a href="#"><i class="fa fa-solid fa-envelope"></i></a>
+                <a href="#"><i class="fa fa-regular fa-star"></i></a>
+            </nav>
+        </div>
+        <p class="foter-coll-p">Lorem ipsum dolor sit amet consectetur.</p>
+    </footer>
+
+
+    
+    <script>
+        /*
+        var form = document.getElementById('form');
+        var dados = {
+            nome:form.nome.value, 
+            idTipo:form.idtipo.value
+        }
+        */
+        var form = document.getElementById('form');
+        var url = 'http://localhost:8081/centrocustos'
+        var dados = {}
+        actionGet(url)
+        let tabela = document.getElementById('listaRegis')
+
+        function inserirRegistro(){
+            event.preventDefault()
+            dados = {
+            idTipo:form.idTipo.value,
+            nome:form.nome.value
+            }
+            if(form.id.value == ''){
+                actionPost(url, dados)
+            }else if(parseInt(form.id.value)>=1){
+                dados.id = form.id.value;
+                actionPut(url, dados)
+            }
+ 
+        }
+
+
+        function construirTabela(res, url){
+        let dados=[...res.data.results];
+        tabela.innerHTML='';
+        dados.forEach((r)=>{
+            
+            let btnEdit = criarBotao(url, 'edit', r.idCentroCustos);
+            let btnDel = criarBotao(url, 'del', r.idCentroCustos);
+
+                let div = document.createElement('div')
+                div.append(btnEdit)
+                div.append(btnDel)
+
+                let linha = tabela.insertRow();
+                linha.insertCell(0).innerHTML = r.nome;
+                linha.insertCell(1).innerHTML = r.nomeTipo;
+                linha.insertCell(2).append(div);
+        
+        })
+        limparCampos()   
+        }
+            function limparCampos(){
+            form.id.value='';
+            form.idTipo.value='';
+            form.nome.value='';
+            form.nome.focus();
+        }
+            function carregarCampos(res){
+            let dados=[...res.data.results];
+            form.id.value=dados[0].idCentroCustos;
+            form.idTipo.value=dados[0].idTipo;
+            form.nome.value=dados[0].nome;
+            form.nome.focus();
+        }
+
+
+        /*========MINHA FUNÇÃO ================
+        function construirTabela(res){
+            tabela.innerHTML = ''
+            let dados = [...res.data.results]
+            console.log(dados)
+
+                dados.forEach(element => {
+
+                    let linha = tabela.insertRow()
+                    linha.insertCell(0).innerHTML=element.nome
+                    linha.insertCell(1).innerHTML=element.nomeTipo
+                });
+            }*/
+        
+    </script>
+    
+</body>
+</html>

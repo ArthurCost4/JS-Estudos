@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,300&family=Roboto:wght@300&display=swap');
+
+/*======================================RESET=======================================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+p, ul{
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+
+/*======================================variaveis=======================================*/
+
+:root{
+
+    /*======================================fonts=======================================*/
+    --font-text: 'Roboto', sans-serif;
+    --font-titulo: 'Poppins', sans-serif;
+
+/*FONTS WEIGHT*/
+
+    --font-medium: 500px;
+    --font-semi-bold: 600px;
+
+/*size fonts*/
+
+    --big-font-size: 3em;
+    --h1-font-size: 2em;
+    --h2-font-size: 1.75em;
+    --h3-font-size: 1.50em;
+    --h4-font-size: 1.20em;
+    --normal-size: .93em;
+    --small-size: .83em;
+    --smaller-size: 1.75em;
+
+/*Margems bottom and padding*/
+    --mb-0-25: .25em;
+    --mb-0-5: .5em;
+    --mb-0-75: .75em;
+    --mb-1-0: 1em;
+    --mb-1-25: 1.25em;
+    --mb-1-5: 1.5em;
+    --mb-2-0: 2em;
+    --mb-2-5: 2.5em;
+    --mb-3-0: 3em;
+
+}
+
+/*======================================Header=======================================*/
+header{
+    font-family: var(--font-titulo);
+    color: white;
+}
+.cabecalho-global{
+    height: 50em;
+}
+.cabecalho{
+    padding: var(--mb-1-0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, black, rgba(1, 11, 27, 0.322));
+}
+.cabecalho-nav{
+    display: flex;
+}
+.cabecalho-nav-a:not(:first-child){
+    
+    margin-left: var(--mb-2-0);
+}
+.cabecalho-content{
+    margin-top: var(--mb-2-0);
+    width: 22em;
+    margin-left: 6em;
+    margin-top: 12em;
+    color: white;
+}
+.cabecalho-global{
+    background-image: url(../img/pexels-dovis-6719878.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/*======================================conteudo=======================================*/
+
+
+/*==============intro=========================*/
+.intro{
+    margin-top: var(--mb-3-0);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 40em;
+    margin-bottom: var(--mb-3-0);
+}
+.redicenca{
+    font-size: 4em;
+}
+.intro-h1{
+    font-family: var(--font-titulo);
+    font-size: var(--h1-font-size);
+}
+.intro-p{
+    font-family: var(--font-text);
+}
+
+
+/*==============Tabela=========================*/
+.formulario{
+    margin-top: var(--mb-3-0);
+    display: flex;
+    justify-content: space-around;
+}
+
+/*==============section-1=========================*/
+.section-explicacao{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 25em;
+}
+.section-h2{
+    margin-left: 9em;
+}
+
+.section-p{
+    width: 20em;
+    display: flex;
+    margin-top: var(--mb-1-5);
+}
+.quem-e{
+    color: red;
+}
+
+
+/*======================================footer=======================================*/
+
+.footer{
+    margin-top: var(--mb-3-0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(22, 22, 22);
+    
+}
+.foter-coll-h4{
+    font-family: var(--font-titulo);
+    font-size: var(--h3-font-size);
+    text-align: center;
+    color: white;
+}
+.foter-coll-p{
+    font-family: var(--font-text);
+    font-size: var(--h4-font-size);
+    color: white;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+}
+.foter-coll{
+    padding: 1.5em;
+}
