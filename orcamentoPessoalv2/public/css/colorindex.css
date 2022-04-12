@@ -1,0 +1,67 @@
+:root{
+    --cor1: #151547;
+    --cor2: #292987;
+    --cor3: #3434AD;
+    --cor4: #3B3CC6;
+    --cor5: #3F3FD4;
+    --cor6: rgb(0, 0, 0);
+    --cor7: white;
+}
+.dark-mode:root{
+    --cor1: #151547;
+    --cor2: #292987;
+    --cor3: #3434AD;
+    --cor4: #3B3CC6;
+    --cor5: #3F3FD4;
+    --cor6: rgb(230, 222, 222);
+    --cor7: rgb(3, 3, 3);
+}
+
+/*======================================Header=======================================*/
+
+.a{
+    color: var(--cor1);
+    transition: all .5s ease;
+}
+.a:hover{
+    color: black;
+}
+.b{
+    color: var(--cor7);
+    transition: all .5s ease;
+}
+.b:hover{
+    color: #151547;
+}
+
+/*======================================main-first-section=======================================*/
+
+.intro-textt{
+    color: var(--cor6);
+}
+/*======================================cards-global=======================================*/
+
+.cards-global-a{
+    padding: .5em;
+    background-color: rgb(240, 238, 238);
+    border-radius: 10px;
+    box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.247);
+    transition: all 1s ease;
+}
+.cards-global-a:hover{
+    background: linear-gradient(#e66465, #9198e5);
+}
+.h3-cards{
+    color: var(--cor6);
+}
+.p-cards{
+    color: rgb(41, 40, 40);
+}
+.figu{
+    color: var(--cor2);
+    transition: all 1s ease;
+}
+.figu:hover{
+    color: black;
+}
+

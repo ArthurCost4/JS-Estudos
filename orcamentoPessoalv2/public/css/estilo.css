@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,300&family=Roboto:wght@300&display=swap');
+/*======================================RESET=======================================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+p, ul{
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+/*======================================variaveis=======================================*/
+
+:root{
+
+    /*======================================fonts=======================================*/
+    --font-text: 'Roboto', sans-serif;
+    --font-titulo: 'Poppins', sans-serif;
+
+/*FONTS WEIGHT*/
+
+    --font-medium: 500px;
+    --font-semi-bold: 600px;
+
+/*size fonts*/
+
+    --big-font-size: 3em;
+    --h1-font-size: 2em;
+    --h2-font-size: 1.75em;
+    --h3-font-size: 1.50em;
+    --h4-font-size: 1.20em;
+    --normal-size: .93em;
+    --small-size: .83em;
+    --smaller-size: 1.75em;
+
+/*Margems bottom and padding*/
+    --mb-0-25: .25em;
+    --mb-0-5: .5em;
+    --mb-0-75: .75em;
+    --mb-1-0: 1em;
+    --mb-1-25: 1.25em;
+    --mb-1-5: 1.5em;
+    --mb-2-0: 2em;
+    --mb-2-5: 2.5em;
+    --mb-3-0: 3em;
+
+}
+
+/*======================================Header=======================================*/
+.svgg{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+.navega-global{
+    display: flex;
+    font-family: var(--font-titulo);
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--mb-1-25);
+}
+.navega-global-items{
+    display: flex;
+}
+.a{
+    text-decoration: none;
+}
+.navega-global-items-a{
+    margin-right: var(--mb-2-5);
+}
+
+/*======================================nav-mobile-btn=======================================*/
+.small-bt{
+    display: none;
+    width: 32px;
+    border-top: 2px solid black;
+}
+.small-bt::after,.small-bt::before{
+    content: '';
+    display: block;
+    background-color: currentColor;
+    width: 32px;
+    height: 2px;
+    margin-top: 5px;
+}
+
+/*======================================conteudo=======================================*/
+
+
+.intro{
+    margin-top: var(--mb-3-0);
+    padding-top: var(--mb-2-5);
+    display: flex;
+    align-items: center;
+}
+
+
+/*======Cards======*/
+.cards{
+    margin-top: var(--mb-3-0);
+    margin-bottom: var(--mb-2-5);
+}
+.cards a{
+    text-decoration: none;
+}
+.cards-global-a{
+    width: 11em;
+    height: 14em;
+}
+.cards-global{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.fa.figu{
+    font-size: 4em;
+}
+.h3-cards{
+    font-family: var(--font-titulo);
+    margin-top: var(--mb-0-5);
+    font-size: var(--h3-font-size);
+}
+.p-cards{
+    font-family: var(--font-text);
+    margin-top: var(--mb-0-5);
+    font-size: var(--normal-size);
+}
+
+/*======quadrado-style======*/
+.quadrado{
+    position: absolute;
+    top: 50em;
+    width: 100%;
+    overflow: hidden;
+    left: 0;
+    height: 30em;
+    z-index: -1;
+    background: linear-gradient(to bottom, #3F3FD4, #3B3CC6, #3434AD);
+
+}
+
+/*======TEXT-Slides======*/
+
+.texto-slider{
+    text-align: center;
+}
+.texto-slider-h2{
+    font-family: var(--font-titulo);
+    margin-bottom: var(--mb-0-75);
+}
+.texto-slider-p{
+    font-family: var(--font-text);
+    margin-bottom: var(--mb-0-75);
+}
+
+/*======Slides======*/
+
+.slidershow{
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+}
+.middle{
+    margin: 0 auto;
+}
+
+.navigation{
+    position: absolute;
+    bottom: -47em;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.bar{
+    width: 50px;
+    height: 10px;
+    border: 2px solid #fff;
+    z-index: 100;
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.bar:hover{
+    background: #fff;
+}
+input[name = 'r']{
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides{
+    width: 400%;
+    height: 100%;
+    display: flex;
+}
+.slide{
+    width: 25%;
+    transition: 0.6s;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#r1:checked ~ .s1{
+    margin-left: 0;
+}
+#r2:checked ~ .s1{
+    margin-left: -25%;
+}
+#r3:checked ~ .s1{
+    margin-left: -50%;
+}
+#r4:checked ~ .s1{
+    margin-left: -75%;
+}
+
+/*======Section last======*/
+
+.last-sect{
+    text-align: center;
+    margin-top: var(--mb-3-0);
+}
+.last-sect-h2, .last-sect-h3{
+    font-family: var(--font-titulo);
+}
+.last-sect-p{
+    font-family: var(--font-text);
+}
+.last-sect-content{
+    display: flex;
+    align-items: center;
+}
+.last-sect-img{
+    width: 400px;
+}
+
+/*======Section final======*/
+.sect-final{
+    margin-top: 3em;
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: center;
+    align-items: center;
+}
+.sect-final-cont{
+    margin-left: var(--mb-1-25);
+}
+.sect-final-cont-h{
+    color: white;
+}
+.sect-final-cont-p{
+    color: white;
+}
+
+/*======================================footer-home=======================================*/
+
+.footer{
+    margin-top: var(--mb-3-0);
+    padding-top: var(--mb-2-0);
+    background: linear-gradient(to bottom, rgb(85, 84, 84), rgb(26, 25, 25), black);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.roww{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.roww:not(:last-child){
+    margin-right: var(--mb-1-0);
+}
+
+.foter-coll a{
+    font-family: var(--font-text);
+}
+.footer-p{
+    margin-top: 2em;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    font-family: var(--font-text);
+    background-color: black;
+    width: 100%;
+}
+.foter-coll-h4{
+    margin-bottom: 1.25em;
+    font-family: var(--font-titulo);
+    font-size: var(--h3-font-size);
+}
+.foter-coll-h4::before{
+    content: '';
+    display: block;
+    position: relative;
+    width: 50px;
+    background-color: #3B3CC6;
+    height: 3px;
+    bottom: -40px;
+    left: 0;
+}
+.foter-coll ul li a{
+    font-size: var(--h4-font-size);
+    padding: .3em;
+    text-transform: capitalize;
+    color: rgb(168, 163, 163);
+    font-weight: 300;
+    display: block;
+    transition: all 0.5s ease;
+}
+.foter-coll ul li a:hover{
+    color: white;
+    padding-left: 20px;
+}
+.foter-coll nav a{
+    color: #fff;
+    padding: .3em;
+    font-size: var(--h3-font-size);
+    margin-right: .5em;
+    background-color: rgba(97, 102, 102, 0.377);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.foter-coll nav a:hover{
+    color: black;
+    background-color: #fff;
+}
