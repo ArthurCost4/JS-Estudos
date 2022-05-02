@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const connection = new Sequelize(
-    'orcamento-pessoal-v2', 'root', '123456', {
+    'orcamento-pessoal-v2', 'user', 'password', {
         host: 'localhost',
         dialect: 'mysql'
     }
